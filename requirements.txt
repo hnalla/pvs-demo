@@ -1,0 +1,6 @@
+flask
+torchvision
+black
+opencv-python
+pandas
+requests
