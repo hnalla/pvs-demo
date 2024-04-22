@@ -11,10 +11,19 @@ from torchvision.transforms import Resize, ToTensor
 logger = Logger("app")
 
 logger.info("Loading the model...")
+
 # Load the model
 model = torch.hub.load("ultralytics/yolov5", "yolov5s")
 logger.info("Model loaded successfully!")
+
+PORT = 8040
+
+logger.info(f"Attempting to run on Port {PORT}...")
 app = Flask(__name__)
+
+
+def main():
+    app.run(host="0.0.0.0", port=PORT, debug=True)
 
 
 @app.route("/predict", methods=["POST"])
@@ -41,4 +50,4 @@ def health_check():
 
 
 if __name__ == "__main__":
-    app.run()
+    main()
